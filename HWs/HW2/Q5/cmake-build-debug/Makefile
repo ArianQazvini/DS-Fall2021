@@ -67,10 +67,10 @@ RM = "C:\Program Files\JetBrains\CLion 2020.2.4\bin\cmake\win\bin\cmake.exe" -E 
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\ASUS\Desktop\DS\HW2\Q5
+CMAKE_SOURCE_DIR = C:\Users\ASUS\Desktop\DS-Project\HWs\HW2\Q5
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\ASUS\Desktop\DS\HW2\Q5\cmake-build-debug
+CMAKE_BINARY_DIR = C:\Users\ASUS\Desktop\DS-Project\HWs\HW2\Q5\cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -99,9 +99,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\ASUS\Desktop\DS\HW2\Q5\cmake-build-debug\CMakeFiles C:\Users\ASUS\Desktop\DS\HW2\Q5\cmake-build-debug\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\ASUS\Desktop\DS-Project\HWs\HW2\Q5\cmake-build-debug\CMakeFiles C:\Users\ASUS\Desktop\DS-Project\HWs\HW2\Q5\cmake-build-debug\CMakeFiles\progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\ASUS\Desktop\DS\HW2\Q5\cmake-build-debug\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\ASUS\Desktop\DS-Project\HWs\HW2\Q5\cmake-build-debug\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -130,17 +130,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named Q5
+# Target rules for targets named Q5_2
 
 # Build rule for target.
-Q5: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 Q5
-.PHONY : Q5
+Q5_2: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 Q5_2
+.PHONY : Q5_2
 
 # fast build rule for target.
-Q5/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Q5.dir\build.make CMakeFiles/Q5.dir/build
-.PHONY : Q5/fast
+Q5_2/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Q5_2.dir\build.make CMakeFiles/Q5_2.dir/build
+.PHONY : Q5_2/fast
 
 main.obj: main.c.obj
 
@@ -148,7 +148,7 @@ main.obj: main.c.obj
 
 # target to build an object file
 main.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Q5.dir\build.make CMakeFiles/Q5.dir/main.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Q5_2.dir\build.make CMakeFiles/Q5_2.dir/main.c.obj
 .PHONY : main.c.obj
 
 main.i: main.c.i
@@ -157,7 +157,7 @@ main.i: main.c.i
 
 # target to preprocess a source file
 main.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Q5.dir\build.make CMakeFiles/Q5.dir/main.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Q5_2.dir\build.make CMakeFiles/Q5_2.dir/main.c.i
 .PHONY : main.c.i
 
 main.s: main.c.s
@@ -166,7 +166,7 @@ main.s: main.c.s
 
 # target to generate assembly for a file
 main.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Q5.dir\build.make CMakeFiles/Q5.dir/main.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Q5_2.dir\build.make CMakeFiles/Q5_2.dir/main.c.s
 .PHONY : main.c.s
 
 # Help Target
@@ -177,7 +177,7 @@ help:
 	@echo ... depend
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... Q5
+	@echo ... Q5_2
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

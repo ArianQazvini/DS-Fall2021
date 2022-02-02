@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.17)
-project(Q5 C)
+project(Q5_2 C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(Q5 main.c)
+add_executable(Q5_2 main.c)

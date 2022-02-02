@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "C:/Users/ASUS/Desktop/DS/HW2/Q5/main.c" "C:/Users/ASUS/Desktop/DS/HW2/Q5/cmake-build-debug/CMakeFiles/Q5.dir/main.c.obj"
+  "C:/Users/ASUS/Desktop/DS-Project/HWs/HW2/Q5/main.c" "C:/Users/ASUS/Desktop/DS-Project/HWs/HW2/Q5/cmake-build-debug/CMakeFiles/Q5_2.dir/main.c.obj"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

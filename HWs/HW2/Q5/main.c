@@ -1,191 +1,119 @@
 #include <stdio.h>
-#include "stdlib.h"
+#include <stdlib.h>
 #include "string.h"
+#include <inttypes.h>
+#include "stdbool.h"
 struct node{
     int data;
-    struct node *next;
+   // int index;
+    struct node *npx;
 };
-struct stack
+struct node *head = NULL;
+struct node *tail = NULL;
+struct node *start=NULL;
+struct node *startPrev=NULL;
+bool startisFound = false;
+int size=0;
+int k;
+struct node *XOR(struct node *a,struct node *b)
 {
-    int maxsize;    // define max capacity of the stack
-    int top;
-    int *items;
-};
-struct stack* newStack(int capacity)
+    return (struct node*) ((uintptr_t ) (a) ^ (uintptr_t) (b));
+}
+void toEnd(int data)
 {
-    struct stack *pt = (struct stack*)malloc(sizeof(struct stack));
-
-    pt->maxsize = capacity;
-    pt->top = -1;
-    pt->items = (int*)malloc(sizeof(int) * capacity);
-
-    return pt;
-}
-
-// Utility function to return the size of the stack
-int sizeStack(struct stack *pt) {
-    return pt->top + 1;
-}
-
-// Utility function to check if the stack is empty or not
-int isEmpty(struct stack *pt) {
-    return pt->top == -1;                   // or return size(pt) == 0;
-}
-
-// Utility function to check if the stack is full or not
-int isFull(struct stack *pt) {
-    return pt->top == pt->maxsize - 1;      // or return size(pt) == pt->maxsize;
-}
-
-// Utility function to add an element `x` to the stack
-void push(struct stack *pt, int x)
-{
-    // check if the stack is already full. Then inserting an element would
-    // lead to stack overflow
-    if (isFull(pt))
+    struct node *newNode = (struct node *)malloc(sizeof(struct node));
+    size++;
+    newNode->data = data;
+    if(head==NULL)
     {
-        //printf("Overflow\nProgram Terminated\n");
-        exit(EXIT_FAILURE);
-    }
-
-    //printf("Inserting %d\n", x);
-
-    // add an element and increment the top's index
-    pt->items[++pt->top] = x;
-}
-
-// Utility function to return the top element of the stack
-int peek(struct stack *pt)
-{
-    // check for an empty stack
-    if (!isEmpty(pt)) {
-        return pt->items[pt->top];
-    }
-    else {
-        exit(EXIT_FAILURE);
-    }
-}
-
-// Utility function to pop a top element from the stack
-int pop(struct stack *pt)
-{
-    // check for stack underflow
-    if (isEmpty(pt))
-    {
-        //printf("Underflow\nProgram Terminated\n");
-        exit(EXIT_FAILURE);
-    }
-
-   // printf("Removing %d\n", peek(pt));
-
-    // decrement stack size by 1 and (optionally) return the popped element
-    return pt->items[pt->top--];
-}
-//------------------------------------------------------------
-void toEnd(struct node **head,int data)
-{
-    if(*head == NULL)
-    {
-        struct node *newNode  =(struct node *)malloc(sizeof(struct node));
-        newNode->data = data;
-        newNode->next = *head;
-        *head = newNode;
+        newNode->npx = head;
+        head=newNode;
+        tail=head;
     }
     else
     {
-        struct node *temp = *head;
-        while (temp->next!=NULL)
+        newNode->npx=XOR(tail,NULL);
+        tail->npx=XOR(XOR(NULL,tail->npx),newNode);
+        tail=newNode;
+    }
+    if(!startisFound)
+    {
+        if(k==size)
         {
-            temp= temp->next;
+            start=head;
+            startisFound=true;
         }
-        struct node *newNode  =(struct node *)malloc(sizeof(struct node ));
-        newNode->data = data;
-        temp->next = newNode;
-        newNode->next = NULL;
     }
-}
-void print(struct node **head)
-{
-    struct node *temp = *head;
-    while (temp!= NULL)
+    else
     {
-        printf("%d\n",temp->data);
-        temp= temp->next;
+        struct node *temp =start;
+        start= XOR(startPrev,start->npx);
+        startPrev=temp;
     }
 }
-int size(struct node **head)
+void print()
 {
-    struct node *temp = *head;
-    int count = 0;
-    while (temp!=NULL)
-    {
-        count++;
-        temp=temp->next;
-    }
-    return count;
-}
-void reverse(struct node **head)
-{
+    struct node *curr = head;
     struct node *prev = NULL;
-    struct node *next = NULL;
-    struct node *curr = *head;
-    while (curr !=NULL)
+    struct node *next;
+    while (curr!=NULL)
     {
-        next = curr->next;
-        curr->next = prev;
-        prev = curr;
-        curr= next;
+        printf("%d ",curr->data);
+        next =XOR(prev,curr->npx);
+        prev=curr;
+        curr=next;
     }
-    *head = prev;
+    printf("\n");
 }
-void reverseFirst(struct node **head,int k)
+void reverseLastK2(int k)
 {
-  int step = size(head)-k;
-  int help=1;
-  struct node *temp = *head;
-  while (help<step)
-  {
-      temp=temp->next;
-      help++;
-  }
-  struct node *temp2= temp;
-//  struct node *newHead =NULL;
-struct stack* stack = newStack(k);
-  temp= temp->next;
-  while (temp!=NULL)
-  {
-     // toEnd(&newHead,temp->data);
-      push(stack,temp->data);
-      temp=temp->next;
-  }
-  temp2->next=NULL;
-//  reverse(&newHead);
-//  struct node *temp3 = newHead;
-  while (!isEmpty(stack))
-  {
-      toEnd(head,pop(stack));
-  }
+    if(size>0 && k!=1)
+    {
+                 if(startPrev==NULL)
+                 {
+                     struct node *temp = head;
+                     head=tail;
+                     tail=temp;
+                     start=head;
+                 }
+                 else
+                 {
+                     struct node *tailtemp = tail;
+                     tail->npx=XOR(startPrev,XOR(NULL,tail->npx));
+                     start->npx=XOR(XOR(start->npx,startPrev),NULL);
+                     startPrev->npx= XOR(tail,XOR(startPrev->npx,start));
+                     tail=start;
+                     start=tailtemp;
+                 }
+        }
 }
-int getNum(char string[500])
+int getNum(char string[50])
 {
-    char copy[5000];
+    char copy[50];
     strcat(copy,string);
     char *token=strtok(copy," ");
     while (token!=NULL)
     {
         token = strtok(NULL," ");
-        return  atoi(token);
+        char *ptr;
+        int data = strtol(token,&ptr,10);
+        return data;
     }
 }
 int main() {
-    struct node *head =NULL;
-
-    toEnd(&head,10);
-    toEnd(&head,20);
-    toEnd(&head,30);
-    toEnd(&head,40);
-    toEnd(&head,50);
-    reverseFirst(&head,4);
-    print(&head);
+    int n,kk;
+    scanf("%d %d\n",&n,&kk);
+    k=kk;
+    char commands[50];
+    for (int i = 0; i < n; ++i) {
+        gets(commands);
+        if (commands[0] == 'A') {
+            toEnd(getNum(commands));
+        } else if (commands[0] == 'R') {
+            reverseLastK2(k);
+        }
+    }
+     print();
     return 0;
+
 }
