@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/ASUS/Desktop/DS/HW2/Q5_2/main.c
+stdio.h
+-
+stdlib.h
+-
+string.h
+C:/Users/ASUS/Desktop/DS/HW2/Q5_2/string.h
+inttypes.h
+-
+stdbool.h
+C:/Users/ASUS/Desktop/DS/HW2/Q5_2/stdbool.h
+

@@ -1,0 +1,14 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/ASUS/Desktop/DS/HW3/Q4_2/main.c
+stdio.h
+-
+stdlib.h
+C:/Users/ASUS/Desktop/DS/HW3/Q4_2/stdlib.h
+

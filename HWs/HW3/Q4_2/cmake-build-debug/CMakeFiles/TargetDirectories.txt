@@ -1,0 +1,3 @@
+C:/Users/ASUS/Desktop/DS/HW3/Q4_2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/ASUS/Desktop/DS/HW3/Q4_2/cmake-build-debug/CMakeFiles/Q4_2.dir
+C:/Users/ASUS/Desktop/DS/HW3/Q4_2/cmake-build-debug/CMakeFiles/edit_cache.dir
